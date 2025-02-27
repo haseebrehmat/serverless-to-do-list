@@ -1,0 +1,27 @@
+service: serverless-todo-api
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-1
+  environment:
+    TASKS_TABLE: TasksTable
+    LOCALSTACK: "true"
+
+plugins:
+  - serverless-localstack
+
+custom:
+  localstack:
+    host: "127.0.0.1"
+    edgePort: 4566
+    stages:
+      - local
+
+functions:
+  lambda:
+    handler: lambdaFunction.handler
+    events:
+      - http:
+          path: tasks
+          method: get

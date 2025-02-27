@@ -1,0 +1,7 @@
+docs/errors.txt
+.serverless
+node_modules
+dist
+.env
+.env.local
+package-lock.json
